@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 1426f278fbb6da745ac1224ff1e847fa
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: b82d6aac4a6bbd4429d0bd0da7c3d60b
+    m_Address: Assets/ScriptableObjects/EventChannels/SceneManagement/LoadMenu_Channel.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 05c8caf2737510e4cbf261c05db8e043, type: 2}
   m_SchemaSet:

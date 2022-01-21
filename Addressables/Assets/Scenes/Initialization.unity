@@ -249,6 +249,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a74de6f08863db4683a132c26c9a9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managerScene: {fileID: 0}
+  menuToLoad: {fileID: 0}
+  menuLoadChannel:
+    m_AssetGUID: b82d6aac4a6bbd4429d0bd0da7c3d60b
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
 --- !u!1 &1204618156
 GameObject:
   m_ObjectHideFlags: 0

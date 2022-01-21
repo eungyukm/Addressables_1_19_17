@@ -33,11 +33,22 @@ public class InitializationLoader : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Server에서 Asset 
     /// </summary>
     /// <param name="obj"></param>
     private void LoadEventChannel(AsyncOperationHandle<SceneInstance> obj)
     {
-        //menuLoadChannel.LoadAssetAsync<LoadEvenChannelSO>
+        menuLoadChannel.LoadAssetAsync<LoadEventChannelSO>().Completed += LoadMainMenu;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="obj"></param>
+    private void LoadMainMenu(AsyncOperationHandle<LoadEventChannelSO> obj)
+    {
+        obj.Result.RaiseEvent(menuToLoad, true);
+
+        SceneManager.UnloadSceneAsync(0);
     }
 }

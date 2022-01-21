@@ -11,6 +11,12 @@ public class LoadEventChannelSO : DescriptionBaseSO
 {
     public UnityAction<GameSceneSO, bool, bool> OnLoadingRequested;
 
+    /// <summary>
+    /// load할 Scene과 showLoding Scene과 fadeScreen
+    /// </summary>
+    /// <param name="locationToLoad"></param>
+    /// <param name="showLodingScene"></param>
+    /// <param name="fadeScreen"></param>
     public void RaiseEvent(GameSceneSO locationToLoad, bool showLodingScene = false, bool fadeScreen = false)
     {
         if(OnLoadingRequested != null)
