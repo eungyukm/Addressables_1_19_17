@@ -1,7 +1,7 @@
 ﻿using UnityEngine.AddressableAssets;
 
 /// <summary>
-/// Game에 Scene을 가지고 있는
+/// GameScene을 가지고 있는 ScriptableObject입니다.
 /// </summary>
 public class GameSceneSO : DescriptionBaseSO
 {
