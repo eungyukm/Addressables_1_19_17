@@ -249,7 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a74de6f08863db4683a132c26c9a9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  managerScene: {fileID: 0}
+  managerScene: {fileID: 11400000, guid: fe16d68bb89a6134884061da12d2bd7d, type: 2}
   menuToLoad: {fileID: 0}
   menuLoadChannel:
     m_AssetGUID: b82d6aac4a6bbd4429d0bd0da7c3d60b

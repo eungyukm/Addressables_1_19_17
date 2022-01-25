@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 01. Scene을 Load하는 SceneLoad Manager입니다.
@@ -69,5 +71,37 @@ public class SceneLoader : MonoBehaviour
                 currentlyLoadScene.sceneReference.UnLoadScene();
             }
         }
+
+        LoadNewScene();
+    }
+
+    /// <summary>
+    /// 비동기로 Scene을 로드
+    /// </summary>
+    private void LoadNewScene()
+    {
+        loadingOperationHandle = sceneToLoad.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true, 0);
+        loadingOperationHandle.Completed += OnNewSceneLoaded;
+    }
+
+    /// <summary>
+    /// 새로운 Scene이 로드 완료 되었을 때 
+    /// </summary>
+    /// <param name="obj"></param>
+    private void OnNewSceneLoaded(AsyncOperationHandle<SceneInstance> obj)
+    {
+        Scene scene = obj.Result.Scene;
+        // Scene 활성화
+        SceneManager.SetActiveScene(scene);
+
+        StartGameplay();
+    }
+
+    /// <summary>
+    /// Scene이 준비 완료 됨
+    /// </summary>
+    private void StartGameplay()
+    {
+        onSceneReady.RaiseEvent();
     }
 }
