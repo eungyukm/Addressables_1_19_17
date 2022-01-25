@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceProviders;
 
 /// <summary>
 /// 01. Scene을 Load하는 SceneLoad Manager입니다.
 /// 02. 다음 씬을 로드하기 위한 GameSceneSO를 생성합니다.
 /// 03. Scene을 LoadEventChannelSO를 생성합니다.
-/// 04. VoidEventChannel을 생성합니다.
-/// 05. SceneLoad 준비가 완료되었다는 Broadcasting EventChannel ScriptableObject를 생성합니다.
+/// 04. SceneLoad 준비가 완료되었다는 Broadcasting EventChannel ScriptableObject를 생성합니다.
+/// 05. Menu Scene Load 하는 함수 생성
+/// 06. 이전 Scene을 Unload 하는 Coroutine 생성
 /// </summary>
 public class SceneLoader : MonoBehaviour
 {
@@ -21,15 +24,50 @@ public class SceneLoader : MonoBehaviour
     [Header("Broadcasting on")]
     [SerializeField] private VoidEventChannelSO onSceneReady = default;
 
-    // Start is called before the first frame update
-    void Start()
+    // 로딩하는 Scene의 Handle
+    private AsyncOperationHandle<SceneInstance> loadingOperationHandle;
+    private AsyncOperationHandle<SceneInstance> gameplayManagerLoadingOpHandle;
+
+    private float fadeDuration = .5f;
+
+
+    private void OnEnable()
     {
-        
+        loadMenu.OnLoadingRequested += LoadMenu;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDisable()
     {
-        
+        loadMenu.OnLoadingRequested -= LoadMenu;
+    }
+
+    /// <summary>
+    /// Menu Scene을 Load하는 함수
+    /// </summary>
+    /// <param name="menuToLoad"></param>
+    /// <param name="showLoadingScreen"></param>
+    /// <param name="fadeScreen"></param>
+    private void LoadMenu(GameSceneSO menuToLoad, bool showLoadingScreen, bool fadeScreen)
+    {
+        sceneToLoad = menuToLoad;
+
+        StartCoroutine(UnloadPreviousScene());
+    }
+
+    /// <summary>
+    /// 이전 Scene을 unload하는 Coroutine
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator UnloadPreviousScene()
+    {
+        yield return new WaitForSeconds(fadeDuration);
+
+        if(currentlyLoadScene != null)
+        {
+            if(currentlyLoadScene.sceneReference.OperationHandle.IsValid())
+            {
+                currentlyLoadScene.sceneReference.UnLoadScene();
+            }
+        }
     }
 }
