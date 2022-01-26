@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managerScene: {fileID: 11400000, guid: fe16d68bb89a6134884061da12d2bd7d, type: 2}
-  menuToLoad: {fileID: 0}
+  menuToLoad: {fileID: 11400000, guid: 4b7784f6f60e81f428cba49110d1452d, type: 2}
   menuLoadChannel:
     m_AssetGUID: b82d6aac4a6bbd4429d0bd0da7c3d60b
     m_SubObjectName: 

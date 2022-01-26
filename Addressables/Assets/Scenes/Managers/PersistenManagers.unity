@@ -166,8 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e053d80a603db459ab3f2c1c741c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadLocation: {fileID: 0}
-  loadMenu: {fileID: 0}
+  loadLocation: {fileID: 11400000, guid: 7826b3f72cd7ffb41b1a07bd4e9d9e1f, type: 2}
+  loadMenu: {fileID: 11400000, guid: b82d6aac4a6bbd4429d0bd0da7c3d60b, type: 2}
+  onSceneReady: {fileID: 11400000, guid: b75fde3bea94b9847998c869b0c481fc, type: 2}
 --- !u!1 &1735533051
 GameObject:
   m_ObjectHideFlags: 0
