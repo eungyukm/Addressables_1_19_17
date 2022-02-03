@@ -13,34 +13,53 @@ using UnityEngine.SceneManagement;
 /// 04. SceneLoad 준비가 완료되었다는 Broadcasting EventChannel ScriptableObject를 생성합니다.
 /// 05. Menu Scene Load 하는 함수 생성
 /// 06. 이전 Scene을 Unload 하는 Coroutine 생성
+/// 07. Location을 Load하는 함수 생성
+/// 08. Load Event를 생성합니다.
+/// 09. Location을 활성화 하는 Call을 부릅니다.
 /// </summary>
 public class SceneLoader : MonoBehaviour
 {
-    private GameSceneSO sceneToLoad;
-    private GameSceneSO currentlyLoadScene;
+    private GameSceneSO _sceneToLoad;
+    private GameSceneSO _currentlyLoadScene;
 
     [Header("Listening to")]
-    [SerializeField] private LoadEventChannelSO loadLocation = default;
-    [SerializeField] private LoadEventChannelSO loadMenu = default;
+    [SerializeField] private LoadEventChannelSO _loadLocation = default;
+    [SerializeField] private LoadEventChannelSO _loadMenu = default;
+    [SerializeField] private LoadEventChannelSO _coldStartupLocation = default;
+
 
     [Header("Broadcasting on")]
-    [SerializeField] private VoidEventChannelSO onSceneReady = default;
+    [SerializeField] private VoidEventChannelSO _onSceneReady = default;
 
     // 로딩하는 Scene의 Handle
-    private AsyncOperationHandle<SceneInstance> loadingOperationHandle;
-    private AsyncOperationHandle<SceneInstance> gameplayManagerLoadingOpHandle;
+    private AsyncOperationHandle<SceneInstance> _loadingOperationHandle;
+    private AsyncOperationHandle<SceneInstance> _gameplayManagerLoadingOpHandle;
 
     private float fadeDuration = .5f;
 
+    private bool _isLoading = false;
+    private bool _showLoadingScreen;
+
+    private SceneInstance _gameplayManagerSceneInstance = new SceneInstance();
+
+    [SerializeField] private GameSceneSO _gameplayScene = default;
 
     private void OnEnable()
     {
-        loadMenu.OnLoadingRequested += LoadMenu;
+        _loadMenu.OnLoadingRequested += LoadMenu;
+        _loadLocation.OnLoadingRequested += LoadLocation;
+
+#if UNITY_EDITOR
+        _coldStartupLocation.OnLoadingRequested += LocationColdStartup;
+#endif
     }
+
+
 
     private void OnDisable()
     {
-        loadMenu.OnLoadingRequested -= LoadMenu;
+        _loadMenu.OnLoadingRequested -= LoadMenu;
+        _loadLocation.OnLoadingRequested -= LoadLocation;
     }
 
     /// <summary>
@@ -51,7 +70,7 @@ public class SceneLoader : MonoBehaviour
     /// <param name="fadeScreen"></param>
     private void LoadMenu(GameSceneSO menuToLoad, bool showLoadingScreen, bool fadeScreen)
     {
-        sceneToLoad = menuToLoad;
+        _sceneToLoad = menuToLoad;
 
         StartCoroutine(UnloadPreviousScene());
     }
@@ -64,11 +83,11 @@ public class SceneLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(fadeDuration);
 
-        if(currentlyLoadScene != null)
+        if(_currentlyLoadScene != null)
         {
-            if(currentlyLoadScene.sceneReference.OperationHandle.IsValid())
+            if(_currentlyLoadScene.sceneReference.OperationHandle.IsValid())
             {
-                currentlyLoadScene.sceneReference.UnLoadScene();
+                _currentlyLoadScene.sceneReference.UnLoadScene();
             }
         }
 
@@ -80,8 +99,8 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     private void LoadNewScene()
     {
-        loadingOperationHandle = sceneToLoad.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true, 0);
-        loadingOperationHandle.Completed += OnNewSceneLoaded;
+        _loadingOperationHandle = _sceneToLoad.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true, 0);
+        _loadingOperationHandle.Completed += OnNewSceneLoaded;
     }
 
     /// <summary>
@@ -102,6 +121,70 @@ public class SceneLoader : MonoBehaviour
     /// </summary>
     private void StartGameplay()
     {
-        onSceneReady.RaiseEvent();
+        _onSceneReady.RaiseEvent();
     }
+
+    /// <summary>
+    /// Location을 Load합니다.
+    /// </summary>
+    /// <param name="locationToLoad"></param>
+    /// <param name="showLoadingScreen"></param>
+    /// <param name="fadeScreen"></param>
+    private void LoadLocation(GameSceneSO locationToLoad, bool showLoadingScreen, bool fadeScreen)
+    {
+        // 이중 로딩 방지
+        if(_isLoading)
+        {
+            return;
+        }
+
+        _sceneToLoad = locationToLoad;
+        _showLoadingScreen = showLoadingScreen;
+        _isLoading = true;
+
+        // gameplayManager가 로드되지 않았을 때
+        if(_gameplayManagerSceneInstance.Scene == null ||
+            !_gameplayManagerSceneInstance.Scene.isLoaded)
+        {
+            _gameplayManagerLoadingOpHandle = _gameplayScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true);
+            _gameplayManagerLoadingOpHandle.Completed += OnGameplayManagersLoaded;
+        }
+        else
+        {
+            StartCoroutine(UnloadPreviousScene());
+        }
+    }
+
+    /// <summary>
+    /// GamePalyerManager가 로드된 후 이전 Scene을 Unload 합니다.
+    /// </summary>
+    /// <param name="obj"></param>
+    private void OnGameplayManagersLoaded(AsyncOperationHandle<SceneInstance> obj)
+    {
+        _gameplayManagerSceneInstance = _gameplayManagerLoadingOpHandle.Result;
+
+        StartCoroutine(UnloadPreviousScene());
+    }
+
+#if UNITY_EDITOR
+    /// <summary>
+    /// Editor에서만 작동하는 특별한 함수입니다.
+    /// </summary>
+    /// <param name="currentlyOpenedLocation"></param>
+    /// <param name="showLoadingScreen"></param>
+    /// <param name="fadeScreen"></param>
+    private void LocationColdStartup(GameSceneSO currentlyOpenedLocation, bool showLoadingScreen, bool fadeScreen)
+    {
+        _currentlyLoadScene = currentlyOpenedLocation;
+
+        if(_currentlyLoadScene.sceneType == GameSceneSO.GameSceneType.Location)
+        {
+            _gameplayManagerLoadingOpHandle = _gameplayScene.sceneReference.LoadSceneAsync(LoadSceneMode.Additive, true);
+        }
+        else
+        {
+            StartCoroutine(UnloadPreviousScene());
+        }
+    }
+#endif
 }

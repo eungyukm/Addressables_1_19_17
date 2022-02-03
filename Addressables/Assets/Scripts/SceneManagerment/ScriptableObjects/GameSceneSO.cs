@@ -20,5 +20,7 @@ public class GameSceneSO : DescriptionBaseSO
 
         // Work in progress scenes that don't need to be played Art
         Art,
+
+        GamePlay,
     }
 }

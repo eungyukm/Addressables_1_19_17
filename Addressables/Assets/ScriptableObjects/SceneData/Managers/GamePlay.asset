@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d752bcbb241d8c43b36bc1be5562a05, type: 3}
   m_Name: GamePlay
   m_EditorClassIdentifier: 
-  Description: 
-  sceneType: 0
+  Description: "GamePlay\uB294 UI\uC640 \uC778\uBCA4\uD1A0\uB9AC Manager\uB97C \uAC00\uC9C0\uACE0
+    \uC788\uC2B5\uB2C8\uB2E4."
+  sceneType: 5
   sceneReference:
-    m_AssetGUID: 
+    m_AssetGUID: 55b0d7f15b04a51479a0374ccc4bc477
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
