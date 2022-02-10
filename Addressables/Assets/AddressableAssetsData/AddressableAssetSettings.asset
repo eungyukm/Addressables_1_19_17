@@ -62,9 +62,23 @@ MonoBehaviour:
       - m_Id: 6509a44a6cba49d4bb3406e963a442b7
         m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: 0ea466f9a1bbaa941b278a32ca570595
-        m_Value: ServerData/[BuildTarget]
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: d80d131ccfd2981448858ccd424d9bd8
-        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+    - m_InheritedParent: 
+      m_Id: 490047be39d47604f84a6315373e7926
+      m_ProfileName: Windows
+      m_Values:
+      - m_Id: ac235f7bc2dd34141b81214ea1e4b14b
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: be240bbea2803154dac0cdb980d0ba7e
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
+      - m_Id: 6509a44a6cba49d4bb3406e963a442b7
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
+      - m_Id: 0ea466f9a1bbaa941b278a32ca570595
+        m_Value: ServerData/StandloneWindows64
+      - m_Id: d80d131ccfd2981448858ccd424d9bd8
+        m_Value: aroendpoint.azureedge.net/aroaddressables/StandloneWindows64
     m_ProfileEntryNames:
     - m_Id: ac235f7bc2dd34141b81214ea1e4b14b
       m_Name: BuildTarget
@@ -85,6 +99,7 @@ MonoBehaviour:
   m_LabelTable:
     m_LabelNames:
     - default
+    - ManagerScene
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 001eeede8b147454c959300b4a5d8647, type: 2}
@@ -98,7 +113,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 18f92f5700f1c0f448aae56d91e9d29e, type: 2}
   - {fileID: 11400000, guid: 907bd8ac0ecc50444921cad3344c3549, type: 2}
   - {fileID: 11400000, guid: b9c01f9a85457a545acdb81aea2f208f, type: 2}
-  m_ActiveProfileId: 0109337b626c38447a96e4d47f337318
+  m_ActiveProfileId: 490047be39d47604f84a6315373e7926
   m_HostingServicesManager:
     m_HostingServiceInfos: []
     m_Settings: {fileID: 11400000}
