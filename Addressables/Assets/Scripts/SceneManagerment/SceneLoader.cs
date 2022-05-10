@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// 01. Scene을 Load하는 SceneLoad Manager입니다.
@@ -19,6 +20,8 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class SceneLoader : MonoBehaviour
 {
+    [FormerlySerializedAs("gameSceneScene")] [SerializeField] private GameSceneSO gamePlayScene;
+
     private GameSceneSO _sceneToLoad;
     private GameSceneSO _currentlyLoadScene;
 
@@ -60,6 +63,11 @@ public class SceneLoader : MonoBehaviour
     {
         _loadMenu.OnLoadingRequested -= LoadMenu;
         _loadLocation.OnLoadingRequested -= LoadLocation;
+    }
+
+    private void Start()
+    {
+        Debug.Log("Scene PersistentManager");
     }
 
     /// <summary>
@@ -132,6 +140,7 @@ public class SceneLoader : MonoBehaviour
     /// <param name="fadeScreen"></param>
     private void LoadLocation(GameSceneSO locationToLoad, bool showLoadingScreen, bool fadeScreen)
     {
+        Debug.Log("LoadLocation Call!!");
         // 이중 로딩 방지
         if(_isLoading)
         {

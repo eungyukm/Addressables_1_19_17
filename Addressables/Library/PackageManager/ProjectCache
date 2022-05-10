@@ -5,27 +5,27 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637783275043907613
-    m_Hash: 3287070179
+      ticks: 637804008197473319
+    m_Hash: 3684254482
   m_LockFileStatus:
     m_FilePath: D:/06_RnD_Unity/Addressables_1_19_17/Addressables/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637783275044360221
-    m_Hash: 1057410718
+      ticks: 637804008197973040
+    m_Hash: 2088245340
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
   m_Packages:
     m_ResolvedPackages:
-    - packageId: com.unity.addressables@1.19.17
+    - packageId: com.unity.addressables@1.19.18
       testable: 0
       isDirectDependency: 1
-      version: 1.19.17
+      version: 1.19.18
       source: 1
-      resolvedPath: D:\06_RnD_Unity\Addressables_1_19_17\Addressables\Library\PackageCache\com.unity.addressables@1.19.17
+      resolvedPath: D:\06_RnD_Unity\Addressables_1_19_17\Addressables\Library\PackageCache\com.unity.addressables@1.19.18
       assetPath: Packages/com.unity.addressables
       name: com.unity.addressables
       displayName: Addressables
@@ -144,6 +144,7 @@ m_PackageAssets:
         - 1.19.14
         - 1.19.15
         - 1.19.17
+        - 1.19.18
         compatible:
         - 0.0.8-preview
         - 0.0.12-preview
@@ -230,10 +231,11 @@ m_PackageAssets:
         - 1.19.14
         - 1.19.15
         - 1.19.17
+        - 1.19.18
         verified: 1.18.19
       dependencies:
       - name: com.unity.scriptablebuildpipeline
-        version: 1.19.5
+        version: 1.19.6
       - name: com.unity.modules.assetbundle
         version: 1.0.0
       - name: com.unity.modules.imageconversion
@@ -246,7 +248,7 @@ m_PackageAssets:
         version: 1.0.0
       resolvedDependencies:
       - name: com.unity.scriptablebuildpipeline
-        version: 1.19.5
+        version: 1.19.6
       - name: com.unity.modules.assetbundle
         version: 1.0.0
       - name: com.unity.modules.imageconversion
@@ -275,13 +277,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637774269120000000
+      datePublishedTicks: 637800663420000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/Addressables.git
-        revision: 7be4014159163b134b4a460f691b9f3ffb5bbc64
+        revision: 7430a17e265967737a63efcf96f3e74aef76b8b4
         path: 
     - packageId: com.unity.collab-proxy@1.15.4
       testable: 0
@@ -337,10 +339,12 @@ m_PackageAssets:
         - 1.14.4
         - 1.14.7
         - 1.14.9
+        - 1.14.12
         - 1.15.1
         - 1.15.4
         - 1.15.7
         - 1.15.9
+        - 1.15.12
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -355,6 +359,7 @@ m_PackageAssets:
         - 1.15.4
         - 1.15.7
         - 1.15.9
+        - 1.15.12
         - 2.0.0-preview.6
         - 2.0.0-preview.8
         - 2.0.0-preview.15
@@ -365,7 +370,7 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
-        verified: 1.15.9
+        verified: 1.15.12
       dependencies:
       - name: com.unity.nuget.newtonsoft-json
         version: 2.0.0
@@ -461,6 +466,7 @@ m_PackageAssets:
         - 3.0.7
         - 3.0.9
         - 3.0.10
+        - 3.0.12
         compatible:
         - 1.0.2
         - 1.0.6
@@ -489,6 +495,7 @@ m_PackageAssets:
         - 3.0.7
         - 3.0.9
         - 3.0.10
+        - 3.0.12
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -648,6 +655,7 @@ m_PackageAssets:
         - 1.2.2
         - 1.2.3
         - 1.2.4
+        - 1.2.5
         compatible:
         - 1.0.2
         - 1.0.3
@@ -661,7 +669,8 @@ m_PackageAssets:
         - 1.2.2
         - 1.2.3
         - 1.2.4
-        verified: 1.2.4
+        - 1.2.5
+        verified: 1.2.5
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -738,10 +747,12 @@ m_PackageAssets:
         - 1.1.29
         - 1.1.30
         - 2.0.1-pre.12
+        - 2.0.1-pre.18
         compatible:
         - 1.1.29
         - 1.1.30
         - 2.0.1-pre.12
+        - 2.0.1-pre.18
         verified: 1.1.30
       dependencies:
       - name: com.unity.ext.nunit
@@ -1031,7 +1042,9 @@ m_PackageAssets:
         - 1.6.1
         - 1.6.2
         - 1.6.3
+        - 1.6.4
         - 1.7.0-pre.1
+        - 1.7.0-pre.2
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -1055,7 +1068,9 @@ m_PackageAssets:
         - 1.6.1
         - 1.6.2
         - 1.6.3
+        - 1.6.4
         - 1.7.0-pre.1
+        - 1.7.0-pre.2
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
@@ -3112,12 +3127,12 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/operate-services-sdk.git
         revision: 4cd880d4fd5c60597629249bf4f324e4c8d7aa2e
         path: 
-    - packageId: com.unity.scriptablebuildpipeline@1.19.5
+    - packageId: com.unity.scriptablebuildpipeline@1.19.6
       testable: 0
       isDirectDependency: 0
-      version: 1.19.5
+      version: 1.19.6
       source: 1
-      resolvedPath: D:\06_RnD_Unity\Addressables_1_19_17\Addressables\Library\PackageCache\com.unity.scriptablebuildpipeline@1.19.5
+      resolvedPath: D:\06_RnD_Unity\Addressables_1_19_17\Addressables\Library\PackageCache\com.unity.scriptablebuildpipeline@1.19.6
       assetPath: Packages/com.unity.scriptablebuildpipeline
       name: com.unity.scriptablebuildpipeline
       displayName: Scriptable Build Pipeline
@@ -3183,6 +3198,7 @@ m_PackageAssets:
         - 1.19.3
         - 1.19.4
         - 1.19.5
+        - 1.19.6
         compatible:
         - 0.0.5-preview
         - 0.0.6-preview
@@ -3232,7 +3248,8 @@ m_PackageAssets:
         - 1.19.3
         - 1.19.4
         - 1.19.5
-        verified: 1.19.5
+        - 1.19.6
+        verified: 1.19.6
       dependencies: []
       resolvedDependencies: []
       keywords:
@@ -3254,13 +3271,13 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 637756830880000000
+      datePublishedTicks: 637800663370000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
         url: https://github.cds.internal.unity3d.com/unity/Addressables.git
-        revision: 766b92d8bf75d9d86f8c8de26d8409ae166f84dd
+        revision: 7430a17e265967737a63efcf96f3e74aef76b8b4
         path: 
   m_LocalPackages:
     m_LocalFileStatus: []

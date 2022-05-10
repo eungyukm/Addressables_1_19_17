@@ -22,6 +22,7 @@ public class InitializationLoader : MonoBehaviour
     private void Start()
     {
         SceneLoad();
+        Debug.Log("Scene : Initalization");
     }
 
     /// <summary>

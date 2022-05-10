@@ -78,7 +78,7 @@ MonoBehaviour:
       - m_Id: 0ea466f9a1bbaa941b278a32ca570595
         m_Value: ServerData/StandloneWindows64
       - m_Id: d80d131ccfd2981448858ccd424d9bd8
-        m_Value: aroendpoint.azureedge.net/aroaddressables/StandloneWindows64
+        m_Value: https://aroendpoint.azureedge.net/aroaddressables/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: ac235f7bc2dd34141b81214ea1e4b14b
       m_Name: BuildTarget
